@@ -3,7 +3,11 @@
 <configuration>
     <property>
         <name>hbase.zookeeper.quorum</name>
-        <value>hbaseserver01.IBM-PoC-Siemens-MindSphere-PoC.cloud,hbaseserver02.IBM-PoC-Siemens-MindSphere-PoC.cloud,hbaseserver03.IBM-PoC-Siemens-MindSphere-PoC.cloud</value>
+        <value>hbaseserver01.openshift.me,hbaseserver02.openshift.me,hbaseserver03.openshift.me</value>
+    </property>
+    <property>
+      <name>zookeeper.znode.parent</name>
+      <value>/hbase-unsecure</value>
     </property>
     <property>
         <name>hbase.zookeeper.property.clientPort</name>
