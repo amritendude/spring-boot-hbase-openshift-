@@ -149,6 +149,7 @@ public class HBaseClientOperations {
             Put p = new Put(Bytes.toBytes("Row" + iCtr));
             p.addImmutable(family1.getBytes(), Bytes.toBytes("Qualifier" + iCtr), cellData);
             p.addImmutable(family2.getBytes(), Bytes.toBytes("Qualifier" + (iCtr+1)), cellData);
+            table.put(p);
         }
 
         admin.disableTable(table1);
