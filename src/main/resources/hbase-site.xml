@@ -6,6 +6,10 @@
         <value>hbaseserver01.IBM-PoC-Siemens-MindSphere-PoC.cloud,hbaseserver02.IBM-PoC-Siemens-MindSphere-PoC.cloud,hbaseserver03.IBM-PoC-Siemens-MindSphere-PoC.cloud</value>
     </property>
     <property>
+      <name>zookeeper.znode.parent</name>
+      <value>/hbase-unsecure</value>
+    </property>
+    <property>
         <name>hbase.zookeeper.property.clientPort</name>
         <value>2181</value>
     </property>
