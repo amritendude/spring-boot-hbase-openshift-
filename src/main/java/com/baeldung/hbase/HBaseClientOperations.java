@@ -128,7 +128,7 @@ public class HBaseClientOperations {
         System.out.println("\n*** PUT example ~inserting \"cell-data\" into Family1:Qualifier1 of Table1 ~ ***");
 
         // Row1 => Family1:Qualifier1, Family1:Qualifier2
-        /*Put p = new Put(row1);
+        Put p = new Put(row1);
         p.addImmutable(family1.getBytes(), qualifier1, cellData);
         p.addImmutable(family1.getBytes(), qualifier2, cellData);
         table.put(p);
@@ -143,14 +143,14 @@ public class HBaseClientOperations {
         p = new Put(row3);
         p.addImmutable(family1.getBytes(), qualifier1, cellData);
         p.addImmutable(family2.getBytes(), qualifier3, cellData);
-        table.put(p);*/
+        table.put(p);
 
-        for (int iCtr = 1; iCtr < SIZE; iCtr++) {
+        /*for (int iCtr = 1; iCtr < SIZE; iCtr++) {
             Put p = new Put(Bytes.toBytes("Row" + iCtr));
             p.addImmutable(family1.getBytes(), Bytes.toBytes("Qualifier" + iCtr), cellData);
             p.addImmutable(family2.getBytes(), Bytes.toBytes("Qualifier" + (iCtr+1)), cellData);
             table.put(p);
-        }
+        }*/
 
         admin.disableTable(table1);
         try {
