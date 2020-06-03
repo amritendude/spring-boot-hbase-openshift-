@@ -16,22 +16,20 @@ public class HbaseClientExample {
         new HbaseClientExample().connect();
     }
 
-    public void connect() throws IOException, ServiceException {
+    public String connect() throws IOException, ServiceException {
+        String status = "NOTOK";
         Configuration config = HBaseConfiguration.create();
-
         String path = this.getClass().getClassLoader().getResource("hbase-site.xml").getPath();
-
         config.addResource(new Path(path));
-
         try {
             HBaseAdmin.checkHBaseAvailable(config);
         } catch (MasterNotRunningException e) {
             System.out.println("HBase is not running." + e.getMessage());
-            return;
+            return status;
         }
-
         HBaseClientOperations HBaseClientOperations = new HBaseClientOperations();
         HBaseClientOperations.run(config);
+        return "OK";
     }
 
 }

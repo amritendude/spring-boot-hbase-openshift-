@@ -13,14 +13,16 @@ import java.io.IOException;
 public class HbaseController {
 
     @GetMapping("/get")
-    public void get() {
+    public String get() {
+        String status="NOTOK";
         try {
-            new HbaseClientExample().connect();
+            status = new HbaseClientExample().connect();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ServiceException e) {
             e.printStackTrace();
         }
+        return status;
     }
 
     @GetMapping("/status")
