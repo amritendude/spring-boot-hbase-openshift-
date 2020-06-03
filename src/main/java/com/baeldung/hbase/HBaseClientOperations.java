@@ -11,6 +11,7 @@ import org.apache.hadoop.hbase.filter.FilterList.Operator;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class HBaseClientOperations {
     private final byte[] qualifier2 = Bytes.toBytes("Qualifier2");
     private final byte[] qualifier3 = Bytes.toBytes("Qualifier3");
 
-    private final Long SIZE = 100L;
+    private final Long SIZE = 1000L;
 
     private void createTable(Admin admin) throws IOException {
         HTableDescriptor desc = new HTableDescriptor(table1);
@@ -144,13 +145,18 @@ public class HBaseClientOperations {
         p.addImmutable(family1.getBytes(), qualifier1, cellData);
         p.addImmutable(family2.getBytes(), qualifier3, cellData);
         table.put(p);*/
-
+        Long start = System.currentTimeMillis();
+        List<Put> list = new ArrayList<>();
         for (int iCtr = 1; iCtr < SIZE; iCtr++) {
             Put p = new Put(Bytes.toBytes("Row" + iCtr));
             p.addImmutable(family1.getBytes(), Bytes.toBytes("Qualifier" + iCtr), cellData);
             p.addImmutable(family2.getBytes(), Bytes.toBytes("Qualifier" + (iCtr+1)), cellData);
-            table.put(p);
+            list.add(p);
         }
+
+        table.put(list);
+        Long end = System.currentTimeMillis();
+        System.out.println("Insertion done in " + (end-start) + " milliseconds");
 
         admin.disableTable(table1);
         try {
