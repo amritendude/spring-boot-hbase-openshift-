@@ -156,14 +156,14 @@ public class HBaseClientOperations {
         try {
             HColumnDescriptor desc = new HColumnDescriptor(row1);
             admin.addColumn(table1, desc);
-            System.out.println("Success.");
+            System.out.println("Success.....");
         } catch (Exception e) {
-            System.out.println("Failed.");
+            System.out.println("Failed.....");
             System.out.println(e.getMessage());
         } finally {
             admin.enableTable(table1);
         }
-        System.out.println("Done. ");
+        System.out.println("Done....");
     }
 
     public void run(Configuration config) throws IOException {
